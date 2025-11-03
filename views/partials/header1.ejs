@@ -1,0 +1,114 @@
+<!-- 🔹 Barre supérieure moderne -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<header class="navbar navbar-expand-lg py-3 shadow-sm fixed-top modern-header">
+  <div class="container-fluid px-4">
+    <!-- 🔸 Logo et titre -->
+    <a class="navbar-brand text-white fw-semibold d-flex align-items-center" href="/" style="font-family: 'Poppins', sans-serif;">
+      <i class="bi bi-building me-2 fs-4"></i> A.P.C Zighoud Youcef
+    </a>
+
+    <!-- 🔸 Bouton menu mobile -->
+    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+      
+    <!-- 🔸 Menu -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+    
+      
+      
+      <ul class="navbar-nav align-items-center gap-2 mt-3 mt-lg-0">
+        
+        <li class="nav-item">
+          <a href="/afficherarticles" class="nav-link active text-white fw-medium px-3 rounded-pill hover-link">
+            <i class="bi bi-house-door me-1"></i> Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/sections/affichersections" class="nav-link text-white fw-medium px-3 rounded-pill hover-link">
+            <i class="bi bi-diagram-3 me-1"></i> Sections
+          </a>
+        </li>
+        
+          
+        <li class="nav-item">
+          <a href="/logout" class="btn btn-light btn-sm fw-semibold shadow-sm ms-lg-3 logout-btn">
+            <i class="bi bi-box-arrow-right me-1"></i> Déconnexion
+          </a>
+        </li>
+       <div> 
+     
+      </div>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- 🌈 Style personnalisé -->
+<style>
+ 
+  /* 🟣 Couleur principale */
+  .modern-header { 
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(90deg, #4f46e5, #6366f1, #818cf8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    animation: slideDown 0.6s ease;
+    transition: background 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  /* Animation d’apparition */
+  @keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* 🔹 Liens avec effet */
+  .hover-link {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .hover-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+  }
+
+  /* 🔸 Bouton déconnexion stylé */
+  .logout-btn {
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .logout-btn:hover {
+    background: #f8f9fa;
+    color: #4f46e5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+  }
+
+  /* 🔹 Navbar lien actif */
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: 600;
+  }
+
+  /* 📱 Pour mobile */
+  @media (max-width: 991px) {
+    .navbar-collapse {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 10px;
+      margin-top: 10px;
+      backdrop-filter: blur(6px);
+    }
+  }
+
+  /* 🌙 Petite ombre sous la navbar */
+  body {
+    padding-top: 80px;
+  }
+</style>

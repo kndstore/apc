@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📚 Gestion des Sections</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icônes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Animation CSS -->
+  <style>
+    *{font-family: 'Poppins', sans-serif;
+}
+    body {
+      background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+      animation: fadeIn 1s ease-in-out;
+      min-height: 100vh;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-custom {
+      background: white;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .table thead th {
+      background: #0d6efd;
+      color: white;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .alert {
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ✅ En-tête -->
+
+
+  <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold text-primary">📚 Liste des Sections</h2>
+      <a href="/sections/ajouter" class="btn btn-primary btn-lg shadow-sm">
+        <i class="bi bi-plus-circle"></i> Ajouter une Section
+      </a>
+    </div>
+
+    <!-- ✅ Table des sections -->
+    <% if (sections.length > 0) { %>
+      <div class="card card-custom p-4 animate__animated animate__fadeInUp">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle text-center">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom de la Section</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% sections.forEach((section, index) => { %>
+                <tr class="align-middle">
+                  <td><%= index + 1 %></td>
+                  <td class="fw-semibold"><%= section.section_name %></td>
+                  <td>
+                    <a href="/sections/modifier/<%= section._id %>" class="btn btn-warning">
+                      <i class="bi bi-pencil-square"></i> Modifier
+                    </a>
+                    <form action="/sections/supprimer/<%= section._id %>" method="POST" style="display:inline;">
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Supprimer cette section ?')">
+                        <i class="bi bi-trash"></i> Supprimer
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% } else { %>
+      <div class="alert alert-info text-center shadow-sm p-4">
+        <i class="bi bi-info-circle"></i> Aucune section trouvée.
+      </div>
+    <% } %>
+  </div>
+
+  <footer>
+    <p>© <%= new Date().getFullYear() %> — Gestion des Sections</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Petite animation d’apparition -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const rows = document.querySelectorAll("tbody tr");
+      rows.forEach((row, i) => {
+        row.style.opacity = "0";
+        setTimeout(() => {
+          row.style.transition = "opacity 0.5s ease";
+          row.style.opacity = "1";
+        }, i * 150);
+      });
+    });
+  </script>
+</body>
+</html>
